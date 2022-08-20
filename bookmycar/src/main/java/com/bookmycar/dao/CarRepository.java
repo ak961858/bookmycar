@@ -10,6 +10,6 @@ import com.bookmycar.model.Car;
 @Repository
 public interface CarRepository extends JpaRepository<Car, Integer>
 {
-	public Optional<Car> findByCarId(int id);
+	public Optional<Car> findById(int id);
 
 }
