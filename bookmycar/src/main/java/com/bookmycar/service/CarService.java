@@ -3,16 +3,12 @@ package com.bookmycar.service;
 import java.util.List;
 import java.util.Optional;
 
-import javax.smartcardio.CardNotPresentException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bookmycar.dao.CarRepository;
 import com.bookmycar.exceptions.CarNotFoundException;
-import com.bookmycar.exceptions.UserNotFoundException;
 import com.bookmycar.model.Car;
-import com.bookmycar.model.User;
 
 @Service
 public class CarService {
