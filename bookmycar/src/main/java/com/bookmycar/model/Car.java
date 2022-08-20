@@ -10,12 +10,7 @@ public class Car {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	public int getId() {
-		return id;
-	}
-	public void setCarId(int id) {
-		this.id = id;
-	}
+	
 	private String carCity;
 	private String brand;
 	private String model;
@@ -32,7 +27,13 @@ public class Car {
 	private int fuelTankCapacity;
 	private float mileage;
 	private String color;
-	
+
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getCarCity() {
 		return carCity;
 	}
@@ -129,6 +130,7 @@ public class Car {
 	public void setColor(String color) {
 		this.color = color;
 	}
+	
 	public Car(String carCity, String brand, String model, String variant, double price, String transmissionType,
 			float kmsDriven, String registrationNumber, String registrationDate, String fuelType, int seatingCapacity,
 			float maxPower, float maxTorque, int fuelTankCapacity, float mileage, String color) {
@@ -154,6 +156,5 @@ public class Car {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
 	
 }
