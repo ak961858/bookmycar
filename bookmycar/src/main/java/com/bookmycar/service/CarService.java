@@ -35,7 +35,8 @@ public class CarService {
 		return null;
 	}
 	
-	public Car addCar(Car c) {		
+	public Car addCar(Car c) {
+		c.setStatus("available");
 		return carRepository.save(c);
 	}
 	
@@ -51,9 +52,9 @@ public class CarService {
 		
 	}
 
-	public Car updateCar(Car toUpdate , int id) {
+	public Car updateCar(Car toUpdate) {
 		// TODO Auto-generated method stub
-		Car c = carRepository.findById(toUpdate.getId()).get();
+		Car c = carRepository.findById(toUpdate.getCarId()).get();
 		c.setCarCity(toUpdate.getCarCity());
 		c.setBrand(toUpdate.getBrand());
 		c.setModel(toUpdate.getModel());
@@ -70,10 +71,9 @@ public class CarService {
 		c.setFuelTankCapacity(toUpdate.getFuelTankCapacity());
 		c.setMileage(toUpdate.getMileage());
 		c.setColor(toUpdate.getColor());
+		c.setStatus(toUpdate.getStatus());
 		
-		carRepository.save(c);
-		
-		return null;
+		return carRepository.save(c);
 	}
 
 

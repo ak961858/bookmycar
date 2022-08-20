@@ -1,15 +1,19 @@
 package com.bookmycar.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Car {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int carId;
 	
 	private String carCity;
 	private String brand;
@@ -27,13 +31,16 @@ public class Car {
 	private int fuelTankCapacity;
 	private float mileage;
 	private String color;
+	private String status;
 
-	public int getId() {
-		return id;
+	
+	public int getCarId() {
+		return carId;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setCarId(int carId) {
+		this.carId = carId;
 	}
+	
 	public String getCarCity() {
 		return carCity;
 	}
@@ -151,10 +158,17 @@ public class Car {
 		this.fuelTankCapacity = fuelTankCapacity;
 		this.mileage = mileage;
 		this.color = color;
+		this.status="available";
 	}
 	public Car() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 }
