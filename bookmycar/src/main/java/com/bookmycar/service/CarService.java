@@ -31,8 +31,7 @@ public class CarService {
 	}
 	
 	public List<Car> getCarByBrand(String brand) {
-		// TODO Auto-generated method stub
-		return null;
+		return carRepository.findAllByBrand(brand);
 	}
 	
 	public Car addCar(Car c) {		
@@ -51,7 +50,7 @@ public class CarService {
 		
 	}
 
-	public Car updateCar(Car toUpdate , int id) {
+	public Car updateCar(Car toUpdate) {
 		// TODO Auto-generated method stub
 		Car c = carRepository.findById(toUpdate.getId()).get();
 		c.setCarCity(toUpdate.getCarCity());

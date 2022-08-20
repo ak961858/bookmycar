@@ -48,15 +48,15 @@ public class CarController {
         
     }
     
-    @DeleteMapping("id/{id}")   
+    @DeleteMapping("/id/{id}")   
     public String deleteCarById(@PathVariable int id)
     {
         return carService.DeleteCarById(id);
     }
     
     @PutMapping
-    public Car updateCar(@RequestBody Car toUpdate , int id)
+    public Car updateCar(@RequestBody Car toUpdate)
     {
-        return carService.updateCar(toUpdate,id);
+        return carService.updateCar(toUpdate);
     }
 }
