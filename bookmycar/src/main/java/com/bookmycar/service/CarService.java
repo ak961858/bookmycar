@@ -3,11 +3,16 @@ package com.bookmycar.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.smartcardio.CardNotPresentException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bookmycar.dao.CarRepository;
+import com.bookmycar.exceptions.CarNotFoundException;
+import com.bookmycar.exceptions.UserNotFoundException;
 import com.bookmycar.model.Car;
+import com.bookmycar.model.User;
 
 @Service
 public class CarService {
@@ -19,9 +24,14 @@ public class CarService {
 		return carRepository.findAll();
 	}
 	
-	public Car getCarById(int id) {
+	public Car getCarById(int id) throws CarNotFoundException{
 		// TODO Auto-generated method stub
-		return null;
+		Optional<Car> car = carRepository.findById(id);
+		if(car.isPresent())
+		{
+			return car.get();
+		}
+		throw new CarNotFoundException();
 	}
 	
 	public List<Car> getCarByBrand(String brand) {
@@ -29,7 +39,7 @@ public class CarService {
 		return null;
 	}
 	
-	public Car AddCar(Car c) {		
+	public Car addCar(Car c) {		
 		return carRepository.save(c);
 	}
 	

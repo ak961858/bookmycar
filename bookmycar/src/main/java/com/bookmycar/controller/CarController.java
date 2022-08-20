@@ -1,6 +1,7 @@
 package com.bookmycar.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bookmycar.exceptions.CarNotFoundException;
 import com.bookmycar.model.Car;
 import com.bookmycar.service.CarService;
 
@@ -27,13 +29,13 @@ public class CarController {
 		return carService.getAllCars();
 	}
 	
-	@GetMapping("/{id}")
-	public Car getCarById(@PathVariable int id)
+	@GetMapping("/id/{id}")
+	public Car getCarById(@PathVariable int id) throws CarNotFoundException
 	{
 		return carService.getCarById(id);
 	}
 	
-	@GetMapping("/{brand}")
+	@GetMapping("/brand/{brand}")
 	public List<Car> getCarByBrand(@PathVariable String brand) 
 	{
 		return carService.getCarByBrand(brand);
@@ -42,11 +44,11 @@ public class CarController {
 	@PostMapping
     public Car addCar(@RequestBody Car car)
     {
-        return carService.AddCar(car);
+        return carService.addCar(car);
         
     }
     
-    @DeleteMapping("/{id}")   
+    @DeleteMapping("id/{id}")   
     public String deleteCarById(@PathVariable int id)
     {
         return carService.DeleteCarById(id);
