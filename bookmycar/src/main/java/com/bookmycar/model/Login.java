@@ -1,4 +1,4 @@
-package com.bookmycar.entity;
+package com.bookmycar.model;
 
 
 import javax.persistence.Column;
