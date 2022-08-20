@@ -1,12 +1,12 @@
 package com.bookmycar.entity;
 
-import java.sql.SQLException;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Table(name="CarUsers")
 public class Login {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userId;
 	
 	@Column(unique = true,nullable = false, length = 40)
@@ -94,18 +94,5 @@ public class Login {
 			return false;
 		return true;
 	}
-	 public boolean isValid() throws SQLException {
-	        Login loginDetails = LoginDao.getLoginDetailsByUserName(userId);
-	        System.out.println(loginDetails.password+":"+password);
-	        if(loginDetails.password.equals(password))
-	        {
-	            return true;
-	        }
-	        return false;
-	    }
-	    
-	    public Login createLogin()
-	    {
-	    	return LoginDao.createLogin(this);
-	    }
+	
 }
