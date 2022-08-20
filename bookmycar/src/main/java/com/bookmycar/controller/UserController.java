@@ -7,20 +7,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookmycar.exceptions.UserNotFoundException;
-import com.bookmycar.model.Login;
-import com.bookmycar.service.LoginService;
+import com.bookmycar.model.User;
+import com.bookmycar.service.UserService;
 
 @RestController
-public class LoginController
+public class UserController
 {
 	
 	@Autowired
-	LoginService service;
+	UserService service;
 	
-	@PostMapping("/login")
-	public String checkLogin(@RequestBody Login login)
+	@PostMapping("/users")
+	public String checkLogin(@RequestBody User login)
 	{
-		Login actual = null;
+		User actual = null;
 		try 
 		{
 			actual = service.getLoginDetailsByUserId(login.getUserId());

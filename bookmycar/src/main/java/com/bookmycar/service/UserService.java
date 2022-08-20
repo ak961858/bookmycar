@@ -5,19 +5,19 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bookmycar.dao.LoginDao;
+import com.bookmycar.dao.UserRepository;
 import com.bookmycar.exceptions.UserNotFoundException;
-import com.bookmycar.model.Login;
+import com.bookmycar.model.User;
 
 @Service
-public class LoginService 
+public class UserService 
 {
 	@Autowired
-	LoginDao dao;
+	UserRepository userRepository;
 	
-	public Login getLoginDetailsByUserId(int id) throws UserNotFoundException
+	public User getLoginDetailsByUserId(int id) throws UserNotFoundException
 	{
-		Optional<Login> details = dao.findByUserId(id);
+		Optional<User> details = userRepository.findByUserId(id);
 		if(details.isPresent())
 		{
 			return details.get();

@@ -5,10 +5,10 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.bookmycar.model.Login;
+import com.bookmycar.model.User;
 
 @Repository
-public interface LoginDao extends JpaRepository<Login, Integer>{
+public interface UserRepository extends JpaRepository<User, Integer>{
 	
-	public Optional<Login> findByUserId(int id);
+	public Optional<User> findByUserId(int id);
 }

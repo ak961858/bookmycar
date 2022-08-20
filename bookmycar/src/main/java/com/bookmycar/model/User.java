@@ -1,33 +1,47 @@
 package com.bookmycar.model;
 
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
+
 
 @Entity
+@Table(name="CarUsers")
 public class User {
 	@Id
-	@GeneratedValue
-	private int id;
-	private String userName;
-	private String password;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int userId;
+	
+	@Column(unique=true,nullable = false)
 	private String email;
-	private String phoneNumber;
-	private String userCity;
+	
+	@Column(nullable = false)
+	private String password;
+
 	private String role;
 	
-	public int getId() {
-		return id;
+	public int getUserId() {
+		return userId;
 	}
-	public void setId(int id) {
-		this.id = id;
+	
+	
+	public String getEmail() {
+		return email;
 	}
-	public String getUserName() {
-		return userName;
+
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+
+
 	public String getPassword() {
 		return password;
 	}
@@ -41,34 +55,47 @@ public class User {
 		this.role = role;
 	}
 	public User() {
+		// TODO Auto-generated constructor stub
+	}
+	public User(int userId, String password, String role) {
 		super();
-	}
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getUserCity() {
-		return userCity;
-	}
-	public void setUserCity(String userCity) {
-		this.userCity = userCity;
-	}
-	public User(String userName, String password, String email, String phoneNumber, String userCity, String role) {
-		super();
-		this.userName = userName;
+		this.userId = userId;
 		this.password = password;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.userCity = userCity;
 		this.role = role;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((role == null) ? 0 : role.hashCode());
+		result = prime * result + userId;
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (role != other.role)
+			return false;
+		if (userId != other.userId)
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", password=" + password + ", role=" + role + "]";
 	}
 	
 	
