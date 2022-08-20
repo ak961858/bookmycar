@@ -45,8 +45,28 @@ public class CarService {
 		
 	}
 
-	public Car updateCar(Car toUpdate) {
+	public Car updateCar(Car toUpdate , int id) {
 		// TODO Auto-generated method stub
+		Car c = carRepository.findById(toUpdate.getId()).get();
+		c.setCarCity(toUpdate.getCarCity());
+		c.setBrand(toUpdate.getBrand());
+		c.setModel(toUpdate.getModel());
+		c.setVariant(toUpdate.getVariant());
+		c.setPrice(toUpdate.getPrice());
+		c.setTransmissionType(toUpdate.getTransmissionType());
+		c.setKmsDriven(toUpdate.getKmsDriven());
+		c.setRegistrationNumber(toUpdate.getRegistrationNumber());
+		c.setRegistrationDate(toUpdate.getRegistrationDate());
+		c.setFuelType(toUpdate.getFuelType());
+		c.setSeatingCapacity(toUpdate.getSeatingCapacity());
+		c.setMaxPower(toUpdate.getMaxPower());
+		c.setMaxTorque(toUpdate.getMaxTorque());
+		c.setFuelTankCapacity(toUpdate.getFuelTankCapacity());
+		c.setMileage(toUpdate.getMileage());
+		c.setColor(toUpdate.getColor());
+		
+		carRepository.save(c);
+		
 		return null;
 	}
 

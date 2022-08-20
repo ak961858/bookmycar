@@ -53,8 +53,8 @@ public class CarController {
     }
     
     @PutMapping
-    public Car updateCar(@RequestBody Car toUpdate)
+    public Car updateCar(@RequestBody Car toUpdate , int id)
     {
-        return carService.updateCar(toUpdate);
+        return carService.updateCar(toUpdate,id);
     }
 }
