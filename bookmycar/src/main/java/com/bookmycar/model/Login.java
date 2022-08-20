@@ -18,15 +18,29 @@ public class Login {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userId;
-
+	
+	@Column(unique=true,nullable = false)
+	private String email;
+	
 	@Column(nullable = false)
 	private String password;
-	@Enumerated(EnumType.STRING)
-	private Role role;
+
+	private String role;
 	
 	public int getUserId() {
 		return userId;
 	}
+	
+	
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 
 	public String getPassword() {
 		return password;
@@ -34,16 +48,16 @@ public class Login {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
-	public void setRole(Role role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 	public Login() {
 		// TODO Auto-generated constructor stub
 	}
-	public Login(int userId, String password, Role role) {
+	public Login(int userId, String password, String role) {
 		super();
 		this.userId = userId;
 		this.password = password;

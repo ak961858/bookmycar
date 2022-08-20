@@ -19,6 +19,16 @@ public class CarService {
 		return carRepository.findAll();
 	}
 	
+	public Car getCarById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public List<Car> getCarByBrand(String brand) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	public Car AddCar(Car c) {		
 		return carRepository.save(c);
 	}
@@ -35,7 +45,10 @@ public class CarService {
 		
 	}
 
-
+	public Car updateCar(Car toUpdate) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 }
