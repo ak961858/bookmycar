@@ -48,7 +48,7 @@ public class CarController {
         
     }
     
-    @DeleteMapping("id/{id}")   
+    @DeleteMapping("/id/{id}")   
     public String deleteCarById(@PathVariable int id)
     {
         return carService.DeleteCarById(id);

@@ -31,8 +31,7 @@ public class CarService {
 	}
 	
 	public List<Car> getCarByBrand(String brand) {
-		// TODO Auto-generated method stub
-		return null;
+		return carRepository.findAllByBrand(brand);
 	}
 	
 	public Car addCar(Car c) {
