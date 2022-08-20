@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bookmycar.entity.Car;
 import com.bookmycar.service.CarService;
 
 @RestController
@@ -16,9 +17,9 @@ public class CarController {
 	CarService carService;
 	
 	@GetMapping("/car")
-	public List<Car> getCar()
+	public List<Car> getCars()
 	{
-		return CarService.getCar();
+		return carService.getCars();
 	}
 
 }
