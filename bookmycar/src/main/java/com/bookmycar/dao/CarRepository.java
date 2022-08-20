@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.bookmycar.entity.Car;
+import com.bookmycar.model.Car;
 
 @Repository
 public interface CarRepository extends JpaRepository<Car, Integer>

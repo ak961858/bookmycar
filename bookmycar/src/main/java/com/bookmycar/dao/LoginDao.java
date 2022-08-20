@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.bookmycar.entity.Login;
+import com.bookmycar.model.Login;
 
 @Repository
 public interface LoginDao extends JpaRepository<Login, Integer>{

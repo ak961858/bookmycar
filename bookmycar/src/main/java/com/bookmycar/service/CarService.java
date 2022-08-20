@@ -2,7 +2,7 @@ package com.bookmycar.service;
 
 import java.util.List;
 
-import com.bookmycar.entity.Car;
+import com.bookmycar.model.Car;
 
 public class CarService {
 

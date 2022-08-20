@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bookmycar.dao.LoginDao;
-import com.bookmycar.entity.Login;
 import com.bookmycar.exceptions.UserNotFoundException;
+import com.bookmycar.model.Login;
 
 @Service
 public class LoginService 
