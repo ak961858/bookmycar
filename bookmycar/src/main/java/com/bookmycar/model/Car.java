@@ -1,5 +1,7 @@
 package com.bookmycar.model;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,7 +14,7 @@ import javax.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-public class Car {
+public class Car{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int carId;
@@ -33,18 +35,8 @@ public class Car {
 	private int fuelTankCapacity;
 	private float mileage;
 	private String color;
-	
-	@OneToOne(mappedBy = "car",cascade = CascadeType.ALL)
-	@JsonIgnoreProperties("car")
-	private Booking booking;
+	private String bookingStatus;
 
-	
-	public Booking getBooking() {
-		return booking;
-	}
-	public void setBooking(Booking booking) {
-		this.booking = booking;
-	}
 	public int getCarId() {
 		return carId;
 	}
@@ -149,9 +141,10 @@ public class Car {
 		this.color = color;
 	}
 	
+
 	public Car(String carCity, String brand, String model, String variant, double price, String transmissionType,
 			float kmsDriven, String registrationNumber, String registrationDate, String fuelType, int seatingCapacity,
-			float maxPower, float maxTorque, int fuelTankCapacity, float mileage, String color,	Booking booking) {
+			float maxPower, float maxTorque, int fuelTankCapacity, float mileage, String color, String bookingStatus) {
 		super();
 		this.carCity = carCity;
 		this.brand = brand;
@@ -169,12 +162,28 @@ public class Car {
 		this.fuelTankCapacity = fuelTankCapacity;
 		this.mileage = mileage;
 		this.color = color;
-		this.booking = booking;
+		this.bookingStatus = bookingStatus;
 	}
 	public Car() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	public String getBookingStatus() {
+		return bookingStatus;
+	}
+	public void setBookingStatus(String bookingStatus) {
+		this.bookingStatus = bookingStatus;
+	}
+	@Override
+	public String toString() {
+		return "Car [carId=" + carId + ", carCity=" + carCity + ", brand=" + brand + ", model=" + model + ", variant="
+				+ variant + ", price=" + price + ", transmissionType=" + transmissionType + ", kmsDriven=" + kmsDriven
+				+ ", registrationNumber=" + registrationNumber + ", registrationDate=" + registrationDate
+				+ ", fuelType=" + fuelType + ", seatingCapacity=" + seatingCapacity + ", maxPower=" + maxPower
+				+ ", maxTorque=" + maxTorque + ", fuelTankCapacity=" + fuelTankCapacity + ", mileage=" + mileage
+				+ ", color=" + color + ", bookingStatus=" + bookingStatus + "]";
+	}
+	
 	
 	
 }

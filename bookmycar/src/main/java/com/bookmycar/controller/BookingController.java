@@ -1,5 +1,6 @@
 package com.bookmycar.controller;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,9 @@ public class BookingController {
 	@Autowired
 	BookingService bookingService;
 	
+	//place order,requires userId and carId
 	@GetMapping("/{userId}/{carId}")
-	public Booking placeOrder(@PathVariable("userId") int userId,@PathVariable("carId") int carId) throws UserNotFoundException,CarNotFoundException, CarNotAvailableforBookingException {
+	public Booking placeOrder(@PathVariable("userId") int userId,@PathVariable("carId") int carId) throws UserNotFoundException,CarNotFoundException, SQLIntegrityConstraintViolationException, CarNotAvailableforBookingException {
 		return bookingService.placeOrder(userId, carId);
 	}
 	
@@ -39,8 +41,19 @@ public class BookingController {
 	 * "deletion of a booking not allowed"; }
 	 */
 	
-	public Booking viewBookingByUser() {
-		return null;
+	@GetMapping("/users/{id}")
+	public String viewBookingByUser(@PathVariable("id") int id) throws UserNotFoundException {
+		return bookingService.viewBookingByUser(id);
+	}
+	
+	@GetMapping("/cars/{id}")
+	public String viewBookingByCar(@PathVariable("id") int id) throws CarNotFoundException {
+		return bookingService.viewBookingByCar(id);
+	}
+	
+	@DeleteMapping("/id/{id}")
+	public String cancelBooking(@PathVariable("id") int id) throws CarNotFoundException {
+		return bookingService.cancelBooking(id);
 	}
 
 }

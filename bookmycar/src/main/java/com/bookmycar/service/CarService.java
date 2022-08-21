@@ -22,7 +22,7 @@ public class CarService {
 	
 	public Car getCarById(int id) throws CarNotFoundException{
 		// TODO Auto-generated method stub
-		Optional<Car> car = carRepository.findById(id);
+		Optional<Car> car = carRepository.findByCarId(id);
 		if(car.isPresent())
 		{
 			return car.get();
@@ -35,6 +35,7 @@ public class CarService {
 	}
 	
 	public Car addCar(Car c) {
+		c.setBookingStatus("available");
 		return carRepository.save(c);
 	}
 	
@@ -69,7 +70,7 @@ public class CarService {
 		c.setFuelTankCapacity(toUpdate.getFuelTankCapacity());
 		c.setMileage(toUpdate.getMileage());
 		c.setColor(toUpdate.getColor());
-		c.setBooking(toUpdate.getBooking());
+		c.setBookingStatus(toUpdate.getBookingStatus());
 		
 		return carRepository.save(c);
 	}
