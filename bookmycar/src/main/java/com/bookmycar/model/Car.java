@@ -184,6 +184,4 @@ public class Car{
 				+ ", color=" + color + ", bookingStatus=" + bookingStatus + "]";
 	}
 	
-	
-	
 }
