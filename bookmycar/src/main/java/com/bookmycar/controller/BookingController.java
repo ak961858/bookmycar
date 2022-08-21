@@ -32,9 +32,15 @@ public class BookingController {
 		return bookingService.viewAllBookings();
 	}
 	
-	@DeleteMapping
-	public String deleteBooking(int id) {
-		return bookingService.deleteBooking(id);
+	//delete a booking should not exist because once an order is placed,it's status should be changed instead
+	//of deleting the order
+	/*
+	 * public String deleteBooking(int id) { return
+	 * "deletion of a booking not allowed"; }
+	 */
+	
+	public Booking viewBookingByUser() {
+		return null;
 	}
 
 }

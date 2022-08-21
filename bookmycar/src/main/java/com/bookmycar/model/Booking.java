@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.security.auth.login.FailedLoginException;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Booking {
 	@Id
@@ -20,8 +22,19 @@ public class Booking {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id",nullable = false)
 	private User user;
-	@Column(unique = true,nullable = false)
-	private int carId;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="car_id")
+	@JsonIgnoreProperties("booking")
+	private Car car;
+	
+	public Car getCar() {
+		return car;
+	}
+	public void setCar(Car car) {
+		this.car = car;
+	}
+	
 	private String bookingStatus;
 	
 	public int getBookingId() {
@@ -44,18 +57,13 @@ public class Booking {
 		this.bookingStatus = bookingStatus;
 	}
 	
-	public int getCarId() {
-		return carId;
-	}
-	public void setCarId(int carId) {
-		this.carId = carId;
-	}
 	
 	
-	public Booking(User user, int carId, String bookingStatus) {
+	
+	public Booking(User user, Car car, String bookingStatus) {
 		super();
 		this.user = user;
-		this.carId = carId;
+		this.car = car;
 		this.bookingStatus = bookingStatus;
 	}
 	public Booking() {

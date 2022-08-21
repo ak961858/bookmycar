@@ -35,7 +35,6 @@ public class CarService {
 	}
 	
 	public Car addCar(Car c) {
-		c.setStatus("available");
 		return carRepository.save(c);
 	}
 	
@@ -70,7 +69,7 @@ public class CarService {
 		c.setFuelTankCapacity(toUpdate.getFuelTankCapacity());
 		c.setMileage(toUpdate.getMileage());
 		c.setColor(toUpdate.getColor());
-		c.setStatus(toUpdate.getStatus());
+		c.setBooking(toUpdate.getBooking());
 		
 		return carRepository.save(c);
 	}

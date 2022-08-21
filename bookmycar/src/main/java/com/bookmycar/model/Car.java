@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Car {
 	@Id
@@ -31,9 +33,18 @@ public class Car {
 	private int fuelTankCapacity;
 	private float mileage;
 	private String color;
-	private String status;
+	
+	@OneToOne(mappedBy = "car",cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("car")
+	private Booking booking;
 
 	
+	public Booking getBooking() {
+		return booking;
+	}
+	public void setBooking(Booking booking) {
+		this.booking = booking;
+	}
 	public int getCarId() {
 		return carId;
 	}
@@ -140,7 +151,7 @@ public class Car {
 	
 	public Car(String carCity, String brand, String model, String variant, double price, String transmissionType,
 			float kmsDriven, String registrationNumber, String registrationDate, String fuelType, int seatingCapacity,
-			float maxPower, float maxTorque, int fuelTankCapacity, float mileage, String color) {
+			float maxPower, float maxTorque, int fuelTankCapacity, float mileage, String color,	Booking booking) {
 		super();
 		this.carCity = carCity;
 		this.brand = brand;
@@ -158,17 +169,12 @@ public class Car {
 		this.fuelTankCapacity = fuelTankCapacity;
 		this.mileage = mileage;
 		this.color = color;
-		this.status="available";
+		this.booking = booking;
 	}
 	public Car() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
+	
 	
 }
