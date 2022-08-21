@@ -20,6 +20,7 @@ public class CarService {
 		return carRepository.findAll();
 	}
 	
+	
 	public Car getCarById(int id) throws CarNotFoundException{
 		// TODO Auto-generated method stub
 		Optional<Car> car = carRepository.findById(id);
@@ -33,7 +34,15 @@ public class CarService {
 	public List<Car> getCarByBrand(String brand) {
 		return carRepository.findAllByBrand(brand);
 	}
-	
+	public List<Car> getCarByModel(String model) {
+		// TODO Auto-generated method stub
+		return carRepository.findAllByModel(model);
+	}
+	public List<Car> getCarByColor(String color) {
+		// TODO Auto-generated method stub
+		return carRepository.findAllByColor(color);
+	}
+
 	public Car addCar(Car c) {
 		return carRepository.save(c);
 	}
@@ -74,5 +83,9 @@ public class CarService {
 		return carRepository.save(c);
 	}
 
+
+	
+
+	
 
 }

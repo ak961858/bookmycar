@@ -40,7 +40,14 @@ public class CarController {
 	{
 		return carService.getCarByBrand(brand);
 	}
-	
+	@GetMapping("/model/{model}")
+	public List<Car> getCarByModel(@PathVariable String model ){
+		return carService.getCarByModel(model);
+	}
+	@GetMapping("/color/{color}")
+	public List<Car> getCarByColor(@PathVariable String color){
+		return carService.getCarByColor(color);
+	}
 	@PostMapping
     public Car addCar(@RequestBody Car car)
     {

@@ -11,4 +11,8 @@ import com.bookmycar.model.Car;
 public interface CarRepository extends JpaRepository<Car, Integer>
 {
 	public List<Car> findAllByBrand(String brand);
+
+	public List<Car> findAllByModel(String model);
+
+	public List<Car> findAllByColor(String color);
 }
