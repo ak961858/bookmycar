@@ -4,6 +4,6 @@ public class UserNotFoundException extends Exception
 {
 	public String getMessage()
 	{
-		return "Invalid UserId";
+		return "No user found with the given email!";
 	}
 }

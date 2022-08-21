@@ -23,9 +23,9 @@ public class BookingService {
 	@Autowired
 	CarService carService;
 	
-	public Booking placeOrder(int userId,int carId) throws UserNotFoundException,CarNotFoundException, CarNotAvailableforBookingException{
+	public Booking placeOrder(String email,int carId) throws UserNotFoundException,CarNotFoundException, CarNotAvailableforBookingException{
 			
-			User user = userService.getLoginDetailsByUserId(userId);
+			User user = userService.getLoginDetailsByEmail(email);
 			Car car=carService.getCarById(carId);
 				Booking booking=new Booking(user,car,"order placed");			
 				booking=bookingRepository.save(booking);

@@ -11,4 +11,5 @@ import com.bookmycar.model.User;
 public interface UserRepository extends JpaRepository<User, Integer>{
 	
 	public Optional<User> findByUserId(int id);
+	public Optional<User> findByEmail(String email);
 }
