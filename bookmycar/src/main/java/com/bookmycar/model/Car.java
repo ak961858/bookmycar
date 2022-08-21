@@ -175,6 +175,15 @@ public class Car {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "Car [carId=" + carId + ", carCity=" + carCity + ", brand=" + brand + ", model=" + model + ", variant="
+				+ variant + ", price=" + price + ", transmissionType=" + transmissionType + ", kmsDriven=" + kmsDriven
+				+ ", registrationNumber=" + registrationNumber + ", registrationDate=" + registrationDate
+				+ ", fuelType=" + fuelType + ", seatingCapacity=" + seatingCapacity + ", maxPower=" + maxPower
+				+ ", maxTorque=" + maxTorque + ", fuelTankCapacity=" + fuelTankCapacity + ", mileage=" + mileage
+				+ ", color=" + color + ", booking=" + booking + "]";
+	}
 	
 	
 }

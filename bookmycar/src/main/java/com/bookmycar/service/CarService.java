@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.bookmycar.dao.CarRepository;
 import com.bookmycar.exceptions.CarNotFoundException;
@@ -42,6 +44,57 @@ public class CarService {
 		// TODO Auto-generated method stub
 		return carRepository.findAllByColor(color);
 	}
+	public List<Car> getCarByVariant(String variant) {
+		// TODO Auto-generated method stub
+		return carRepository.findAllByVariant(variant);
+	}
+	public List<Car> getCarByPrice(double price) {
+		// TODO Auto-generated method stub
+		return carRepository.findAllByPrice(price);
+	}
+	public List<Car> getCarByTransmissionType(String transmissionType) {
+		// TODO Auto-generated method stub
+		return carRepository.findAllByTransmissionType(transmissionType);
+	}
+	public List<Car> getCarByKmsDriven(float kmsDriven) {
+		// TODO Auto-generated method stub
+		return carRepository.findAllByKmsDriven(kmsDriven);
+	}
+	public List<Car> getCarRegistrationDate(float registrationDate) {
+		// TODO Auto-generated method stub
+		return carRepository.findAllByRegistrationDate(registrationDate);
+	}
+	public List<Car> getCarByFuelType(String fuelType) {
+		// TODO Auto-generated method stub
+		return carRepository.findAllByFuelType(fuelType);
+	}
+	public List<Car> getCarBySeatingCapacity(int seatingCapacity) {
+		// TODO Auto-generated method stub
+		return carRepository.findAllBySeatingCapacity(seatingCapacity);
+	}
+	public List<Car> getCarByMaxPower(float maxPower) {
+		// TODO Auto-generated method stub
+		return carRepository.findAllByMaxPower(maxPower);
+	}
+	public List<Car> getCarByMaxTorque(float maxTorque) {
+		// TODO Auto-generated method stub
+		return carRepository.findAllByMaxTorque(maxTorque);
+	}
+	public List<Car> getCarByFuelTankCapacity(int fuelTankCapacity) {
+		// TODO Auto-generated method stub
+		return carRepository.findAllByFuelTankCapacity(fuelTankCapacity);
+	}
+	public List<Car> getCarByMileage(float mileage) {
+		// TODO Auto-generated method stub
+		return carRepository.findAllByMileage(mileage);
+	}
+	
+	public String getCarByRegistrationNumber(String registrationNumber) {
+		// TODO Auto-generated method stub
+		return carRepository.findByRegistrationNumber(registrationNumber);
+	}
+
+
 
 	public Car addCar(Car c) {
 		return carRepository.save(c);
@@ -85,7 +138,9 @@ public class CarService {
 
 
 	
-
+	
 	
 
+	
+	
 }

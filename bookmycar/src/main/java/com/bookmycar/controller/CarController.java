@@ -48,6 +48,56 @@ public class CarController {
 	public List<Car> getCarByColor(@PathVariable String color){
 		return carService.getCarByColor(color);
 	}
+	@GetMapping("/variant/{variant}")
+	public List<Car> getCarByVariant(@PathVariable String variant)	{
+		return carService.getCarByVariant(variant);
+	}
+	@GetMapping("/price/{price}")
+	public List<Car> getCarByPrice(@PathVariable double price)
+	{
+		return carService.getCarByPrice(price);
+	}
+	@GetMapping("/transmissionType/{transmissionType}")
+	public List<Car> getCarByTransmissionType(@PathVariable String transmissionType){
+		return carService.getCarByTransmissionType(transmissionType);
+	}
+	@GetMapping("/kmsDriven/{kmsDriven}")
+	public List<Car> getCarByKmsDriven(@PathVariable float kmsDriven){
+		return carService. getCarByKmsDriven( kmsDriven);
+	}
+	@GetMapping("/registrationDate/{registrationDate}")
+	public List<Car> getCarByRegistrationDate(@PathVariable float registrationDate){
+		return carService. getCarRegistrationDate(registrationDate );
+	}
+	@GetMapping("/fuelType/{fuelType}")
+	public List<Car> getCarByFuelType(@PathVariable String fuelType){
+		return carService. getCarByFuelType(fuelType );
+	}
+	@GetMapping("/seatingCapacity/{seatingCapacity}")
+	public List<Car> getCarBySeatingCapacity(@PathVariable int seatingCapacity){
+		return carService. getCarBySeatingCapacity(seatingCapacity );
+	}
+	@GetMapping("/maxPower/{maxPower}")
+	public List<Car> getCarByMaxPower(@PathVariable float maxPower){
+		return carService. getCarByMaxPower(maxPower);
+	}
+	@GetMapping("/maxTorque/{maxTorque}")
+	public List<Car> getCarByMaxTorque(@PathVariable float maxTorque){
+		return carService. getCarByMaxTorque(maxTorque);
+	}
+	@GetMapping("/fuelTankCapacity/{fuelTankCapacity}")
+	public List<Car> getCarByFuelTankCapacity(@PathVariable int fuelTankCapacity){
+		return carService. getCarByFuelTankCapacity(fuelTankCapacity);
+	}
+	@GetMapping("/mileage/{mileage}")
+	public List<Car> getCarByMileage(@PathVariable float mileage){
+		return carService. getCarByMileage(mileage);
+	}
+	@GetMapping("/registrationNumber/{registrationNumber}")
+	public String getCarByRegistrationNumber(@PathVariable String registrationNumber)
+	{
+		return carService.getCarByRegistrationNumber(registrationNumber);
+	}
 	@PostMapping
     public Car addCar(@RequestBody Car car)
     {
