@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bookmycar.exceptions.ExistingUserException;
 import com.bookmycar.exceptions.IncorrectPasswordException;
 import com.bookmycar.exceptions.UserNotFoundException;
 import com.bookmycar.model.User;
@@ -20,7 +21,7 @@ public class UserController
 	@Autowired
 	UserService service;
 	
-	@PostMapping("/users")
+	@PostMapping("/login")
 	public String checkLogin(@RequestBody User login)
 	{
 		User actual = null;
@@ -40,11 +41,21 @@ public class UserController
 		return "Incorrect Password";
 	}
 	
+	
+	
 	@GetMapping("/users")
 	public List<User> getAll(){
 		return service.getAll();
 	}
 	
-
+	@PostMapping("/register")
+	public String createUser(User newUser)
+	{
+		try {
+			return service.createUser(newUser);
+		} catch (ExistingUserException e) {
+			return e.getMessage();
+		}
+	}
 
 }
