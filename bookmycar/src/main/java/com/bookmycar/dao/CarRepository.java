@@ -46,4 +46,6 @@ public interface CarRepository extends JpaRepository<Car, Integer>
 	public Optional<Car> findAllByMileageGreaterThanEqual(float mileage);
 
 	public String findByRegistrationNumber(String registrationNumber);
+
+	public List<Car> findAllByCity(String city);
 }

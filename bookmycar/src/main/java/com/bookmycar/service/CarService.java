@@ -50,6 +50,10 @@ public class CarService {
 		// TODO Auto-generated method stub
 		return carRepository.findAllByModel(model);
 	}
+	public List<Car> getCarByCarCity(String city)
+	{
+		return carRepository.findAllByCity(city);
+	}
 	public List<Car> getCarByColor(String color) {
 		// TODO Auto-generated method stub
 		return carRepository.findAllByColor(color);
