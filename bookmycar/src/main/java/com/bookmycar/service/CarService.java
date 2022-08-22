@@ -47,7 +47,7 @@ public class CarService {
 	}
 	public List<Car> getCarByCarCity(String city)
 	{
-		return carRepository.findAllByCity(city);
+		return carRepository.findAllByCarCity(city);
 	}
 	public List<Car> getCarByColor(String color) {
 		// TODO Auto-generated method stub

@@ -19,8 +19,8 @@ public class CarServiceTest {
 	private CarService carService;
 	
 	
-	//We should use @MockBean Annotation if we dont want to perform CRUD operations on our DB and
-	//just test the Service Layer,now 
+	//We should use @MockBean Annotation if we dont want to perform CRUD operations on our DB during testing phase
+	//just test the Service Layer
 	//@MockBean
 	//private CarRepository carRepository;
 	
@@ -38,7 +38,7 @@ public class CarServiceTest {
 	}
 	
 	@Test
-	void testGetCarByCarCity() throws CarNotFoundException {
+	void testGetCarByCarCity(){
 		List<Car> testCarList=carService.getCarByCarCity("pune");
 		System.out.println(testCarList);
 		assertNotNull(testCarList);

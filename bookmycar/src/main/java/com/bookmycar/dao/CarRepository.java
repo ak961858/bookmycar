@@ -47,5 +47,5 @@ public interface CarRepository extends JpaRepository<Car, Integer>
 
 	public String findByRegistrationNumber(String registrationNumber);
 
-	public List<Car> findAllByCity(String city);
+	
 }

@@ -44,7 +44,7 @@ public class CarController {
 	}
 	
 	@GetMapping("/city/{city}")
-	public List<Car> getCarByCarCity(@PathVariable String city) 
+	public List<Car> getCarByCarCity(@PathVariable("city") String city) 
 	{
 		return carService.getCarByCarCity(city);
 	}
