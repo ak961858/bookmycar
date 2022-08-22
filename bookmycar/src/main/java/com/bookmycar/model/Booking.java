@@ -1,32 +1,36 @@
 package com.bookmycar.model;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.security.auth.login.FailedLoginException;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-public class Booking {
+public class Booking{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int bookingId;
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_id",nullable = false)
+	
+	@ManyToOne
+	@JoinColumn(name="car_id")
+	private Car car;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
 	private User user;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="car_id")
-	@JsonIgnoreProperties("booking")
-	private Car car;
+	
+	private String bookingStatus;
+	
+	
 	
 	public Car getCar() {
 		return car;
@@ -34,9 +38,6 @@ public class Booking {
 	public void setCar(Car car) {
 		this.car = car;
 	}
-	
-	private String bookingStatus;
-	
 	public int getBookingId() {
 		return bookingId;
 	}
@@ -56,8 +57,6 @@ public class Booking {
 	public void setBookingStatus(String bookingStatus) {
 		this.bookingStatus = bookingStatus;
 	}
-	
-	
 	
 	
 	public Booking(User user, Car car, String bookingStatus) {
