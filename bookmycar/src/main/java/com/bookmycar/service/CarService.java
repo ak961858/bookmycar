@@ -66,6 +66,7 @@ public class CarService {
 	public List<Car> getCarByKmsDriven(float kmsDriven) {
 		// TODO Auto-generated method stub
 		return carRepository.findAllByKmsDrivenLessThan(kmsDriven);
+		
 	}
 	public List<Car> getCarRegistrationDate(float registrationDate) {
 		// TODO Auto-generated method stub
@@ -91,9 +92,10 @@ public class CarService {
 		// TODO Auto-generated method stub
 		return carRepository.findAllByFuelTankCapacity(fuelTankCapacity);
 	}
-	public List<Car> getCarByMileage(float mileage) {
+	public List<Car> getCarByMileage(float mileage){
 		// TODO Auto-generated method stub
 		return carRepository.findAllByMileageGreaterThanEqual(mileage);
+		
 	}
 	
 	public String getCarByRegistrationNumber(String registrationNumber) {
@@ -144,11 +146,4 @@ public class CarService {
 		return carRepository.save(c);
 	}
 
-
-	
-	
-	
-
-	
-	
 }
