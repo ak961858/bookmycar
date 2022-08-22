@@ -25,10 +25,13 @@ public class BookingController {
 
 	@GetMapping("/{email}/{carId}")
 	public Booking placeOrder(@PathVariable("email") String email,@PathVariable("carId") int carId) throws UserNotFoundException,CarNotFoundException, CarNotAvailableforBookingException {
+
 		return bookingService.placeOrder(email, carId);
 
 
 	}
+
+
 	
 	@GetMapping
 	public String viewAllBookings(){
