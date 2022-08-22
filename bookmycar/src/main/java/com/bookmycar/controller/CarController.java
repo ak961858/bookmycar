@@ -23,18 +23,22 @@ public class CarController {
 	@Autowired
 	CarService carService;
 	
-	@GetMapping
-	public List<Car> getCars()
+	//request To view all cars based on role-admin or customer
+	@GetMapping("/{role}")
+	public List<Car> getCars(@PathVariable("role") String role)
 	{
-		return carService.getAllCars();
+		return carService.getAllCars(role);
 	}
 	
+	
+	//view car by carId
 	@GetMapping("/id/{id}")
-	public Car getCarById(@PathVariable int id) throws CarNotFoundException
+	public Car getCarById(@PathVariable("id") int id) throws CarNotFoundException
 	{
 		return carService.getCarById(id);
 	}
 	
+	//view car by brand name
 	@GetMapping("/brand/{brand}")
 	public List<Car> getCarByBrand(@PathVariable String brand) 
 	{

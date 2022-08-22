@@ -1,8 +1,6 @@
 package com.bookmycar.controller;
 
 import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bookmycar.exceptions.BookingNotFoundException;
 import com.bookmycar.exceptions.CarNotAvailableforBookingException;
 import com.bookmycar.exceptions.CarNotFoundException;
 import com.bookmycar.exceptions.UserNotFoundException;
@@ -30,7 +29,7 @@ public class BookingController {
 	}
 	
 	@GetMapping
-	public List<Booking> viewAllBookings(){
+	public String viewAllBookings(){
 		return bookingService.viewAllBookings();
 	}
 	
@@ -51,9 +50,14 @@ public class BookingController {
 		return bookingService.viewBookingByCar(id);
 	}
 	
+	@GetMapping("/id/{id}")
+	public String viewBookingByBookinId(@PathVariable("id") int id) throws BookingNotFoundException {
+		return bookingService.viewBookingByBookingId(id);
+	}
+	
 	@DeleteMapping("/id/{id}")
 	public String cancelBooking(@PathVariable("id") int id) throws CarNotFoundException {
 		return bookingService.cancelBooking(id);
 	}
-
+	
 }
