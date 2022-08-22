@@ -1,5 +1,6 @@
 package com.bookmycar.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +19,8 @@ public class Car{
 	private double price;
 	private String transmissionType;
 	private float kmsDriven;
+	
+	@Column(unique = true)
 	private String registrationNumber;
 	private String registrationDate;
 	private String fuelType;

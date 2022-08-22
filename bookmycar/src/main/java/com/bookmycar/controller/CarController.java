@@ -120,7 +120,7 @@ public class CarController {
         return carService.DeleteCarById(id);
     }
     
-    @PutMapping
+    @PutMapping()
     public Car updateCar(@RequestBody Car toUpdate)
     {
         return carService.updateCar(toUpdate);
