@@ -55,7 +55,7 @@ public class CarService {
 	}
 	public List<Car> getCarByPrice(double price) {
 		// TODO Auto-generated method stub
-		return carRepository.findAllByPrice(price);
+		return carRepository.findAllByPriceLessThan(price);
 	}
 	public List<Car> getCarByTransmissionType(String transmissionType) {
 		// TODO Auto-generated method stub
@@ -91,7 +91,7 @@ public class CarService {
 	}
 	public List<Car> getCarByMileage(float mileage) {
 		// TODO Auto-generated method stub
-		return carRepository.findAllByMileage(mileage);
+		return carRepository.findAllByMileageGreaterThanEqual(mileage);
 	}
 	
 	public String getCarByRegistrationNumber(String registrationNumber) {

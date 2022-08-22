@@ -25,7 +25,7 @@ public interface CarRepository extends JpaRepository<Car, Integer>
 
 	public List<Car> findAllByVariant(String variant);
 
-	public List<Car> findAllByPrice(double price);
+	public List<Car> findAllByPriceLessThan(double price);
 
 	public List<Car> findAllByTransmissionType(String transmissionType);
 
@@ -43,7 +43,7 @@ public interface CarRepository extends JpaRepository<Car, Integer>
 
 	public List<Car> findAllByFuelTankCapacity(int fuelTankCapacity);
 
-	public List<Car> findAllByMileage(float mileage);
+	public List<Car> findAllByMileageGreaterThanEqual(float mileage);
 
 	public String findByRegistrationNumber(String registrationNumber);
 }
