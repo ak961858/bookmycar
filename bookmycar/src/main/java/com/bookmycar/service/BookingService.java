@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.bookmycar.dao.BookingRepository;
+import com.bookmycar.exceptions.BookingNotFoundException;
 import com.bookmycar.exceptions.CarNotAvailableforBookingException;
 import com.bookmycar.exceptions.CarNotFoundException;
 import com.bookmycar.exceptions.UserNotFoundException;
@@ -45,32 +46,46 @@ public class BookingService {
 		}
 	}
 	
-	public List<Booking> viewAllBookings(){
-		return bookingRepository.findAll();
+	public String viewAllBookings(){
+		List<Booking> bookingsList=bookingRepository.findAll();
+		if(bookingsList.isEmpty()) {
+			return "No Bookings done yet";
+		}
+		else {
+			return bookingsList.toString();
+		}
 	}
 	
 	public String viewBookingByUser(int id) throws UserNotFoundException {
 		User user = userService.getLoginDetailsByUserId(id);
-		if(bookingRepository.findAllByUser(user).isEmpty()) {
+		List<Booking> bookingsList=bookingRepository.findAllByUser(user);
+		if(bookingsList.isEmpty()) {
 			return "No Bookings exist for this user";
 		}
 		else {
-			return bookingRepository.findAllByUser(user).toString();
+			return bookingsList.toString();
 		}
 	}
 	
 	public String viewBookingByCar(int id) throws CarNotFoundException {
 		Car car=carService.getCarById(id);
-		if(bookingRepository.findAllByCar(car).isEmpty()) {
+		List<Booking> bookingsList=bookingRepository.findAllByCar(car);
+		if(bookingsList.isEmpty()) {
 			return "No Bookings exist for this car";
 		}
 		else {
-			return bookingRepository.findAllByCar(car).toString();
+			return bookingsList.toString();
 		}
 	}
 	
-	public Booking viewBookingByBookingId(int id) {
-		return bookingRepository.findByBookingId(id).get();
+	public String viewBookingByBookingId(int id) throws BookingNotFoundException{
+		Optional<Booking> booking=bookingRepository.findByBookingId(id);
+		if(booking.isPresent()) {
+			return booking.toString();
+		}
+		else {
+			throw new BookingNotFoundException();
+		}
 	}
 	
 	public String cancelBooking(int id) throws CarNotFoundException {
@@ -92,5 +107,7 @@ public class BookingService {
 			return "No such Booking exists";
 		}
 	}
+	
+	
 
 }

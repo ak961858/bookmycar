@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Table(name="CarUsers")
 public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int userId;
 	
 	@Column(unique=true,nullable = false)

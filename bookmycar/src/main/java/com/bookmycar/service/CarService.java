@@ -17,9 +17,14 @@ public class CarService {
 	@Autowired
 	CarRepository carRepository;
 	
-	public List<Car> getAllCars()
+	public List<Car> getAllCars(String role)
 	{
-		return carRepository.findAll();
+		if(role.equals("admin"))
+			return carRepository.findAll();
+		else {
+			
+			return carRepository.findAllByBookingStatus("available");
+		}
 	}
 	
 	
@@ -58,7 +63,7 @@ public class CarService {
 	}
 	public List<Car> getCarByKmsDriven(float kmsDriven) {
 		// TODO Auto-generated method stub
-		return carRepository.findAllByKmsDriven(kmsDriven);
+		return carRepository.findAllByKmsDrivenLessThan(kmsDriven);
 	}
 	public List<Car> getCarRegistrationDate(float registrationDate) {
 		// TODO Auto-generated method stub

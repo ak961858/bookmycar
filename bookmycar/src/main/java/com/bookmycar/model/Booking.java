@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 public class Booking{
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int bookingId;
 	
 	@ManyToOne
@@ -69,6 +69,12 @@ public class Booking{
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "Booking [bookingId=" + bookingId + ", car=" + car + ", user=" + user + ", bookingStatus="
+				+ bookingStatus + "]";
+	}
+	
 	
 	
 	
