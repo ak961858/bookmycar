@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.bookmycar.model.Car;
@@ -13,12 +11,14 @@ import com.bookmycar.model.Car;
 @Repository
 public interface CarRepository extends JpaRepository<Car, Integer>
 {
-	public Optional<Car> findAllByBrand(String brand);
+	public List<Car> findAllByBrand(String brand);
 	
 	public List<Car> findAllByBookingStatus(String bookingStatus);
 
 	public Optional<Car> findByCarId(int id);
-
+	
+	public List<Car> findAllByCarCity(String carCity);
+	
 	public List<Car> findAllByModel(String model);
 
 	public List<Car> findAllByColor(String color);
@@ -29,7 +29,7 @@ public interface CarRepository extends JpaRepository<Car, Integer>
 
 	public List<Car> findAllByTransmissionType(String transmissionType);
 
-	public Optional<Car> findAllByKmsDrivenLessThan(float kmsDriven);
+	public List<Car> findAllByKmsDrivenLessThan(float kmsDriven);
 
 	public List<Car> findAllByRegistrationDate(float registrationDate);
 
@@ -43,7 +43,9 @@ public interface CarRepository extends JpaRepository<Car, Integer>
 
 	public List<Car> findAllByFuelTankCapacity(int fuelTankCapacity);
 
-	public Optional<Car> findAllByMileageGreaterThanEqual(float mileage);
+	public List<Car> findAllByMileageGreaterThanEqual(float mileage);
 
 	public String findByRegistrationNumber(String registrationNumber);
+
+//	public List<Car> findAllByCity(String city);
 }

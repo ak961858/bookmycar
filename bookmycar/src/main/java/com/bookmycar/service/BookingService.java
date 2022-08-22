@@ -1,5 +1,6 @@
 package com.bookmycar.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,7 +35,8 @@ public class BookingService {
 		if(car.getBookingStatus().equals("available")) {
 			//if car available for booking
 			//create a new booking
-			Booking booking=new Booking(user,car,"order placed");
+			
+			Booking booking=new Booking(car,user,"order placed",new Date(),null);
 			car.setBookingStatus("order placed");//set car status from available to order placed,update in db
 			carService.updateCar(car);
 			booking=bookingRepository.save(booking);//confirm the booking
@@ -99,6 +101,7 @@ public class BookingService {
 			car.setBookingStatus("available");//set status as available
 			car=carService.updateCar(car);//update the car details
 			updateBooking.setBookingStatus("cancelled");//update booking entity status as cancelled
+			updateBooking.setDateBookingCancelled(new Date());
 			bookingRepository.saveAndFlush(updateBooking);//save the booking
 			return "Booking cancelled";
 		}

@@ -44,7 +44,7 @@ public class UserService
 	
 	public String createUser(User newUser) throws ExistingUserException
 	{
-		if(userRepository.findById(newUser.getUserId()).isPresent())
+		if(userRepository.findByEmail(newUser.getEmail()).isPresent())
 		{
 			throw new ExistingUserException();
 		}
