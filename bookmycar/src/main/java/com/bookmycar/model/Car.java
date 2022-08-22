@@ -20,7 +20,6 @@ public class Car{
 	private String transmissionType;
 	private float kmsDriven;
 	
-	@Column(unique = true)
 	private String registrationNumber;
 	private String registrationDate;
 	private String fuelType;

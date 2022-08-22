@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookmycar.exceptions.ExistingUserException;
-import com.bookmycar.exceptions.IncorrectPasswordException;
 import com.bookmycar.exceptions.UserNotFoundException;
 import com.bookmycar.model.User;
 import com.bookmycar.service.UserService;
@@ -44,12 +43,12 @@ public class UserController
 	
 	
 	@GetMapping("/users")
-	public List<User> getAll(){
+	public String getAll(){
 		return service.getAll();
 	}
 	
 	@PostMapping("/register")
-	public String createUser(@RequestBody User newUser)
+	public String createUser(@RequestBody User newUser) 
 	{
 		try {
 			return service.createUser(newUser);

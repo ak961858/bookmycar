@@ -38,8 +38,12 @@ public class UserService
 		throw new UserNotFoundException();
 	}
 	
-	public List<User> getAll(){
-		return userRepository.findAll();
+	public String getAll(){
+		List<User> users=userRepository.findAll();
+		if(users.isEmpty()) {
+			return "No Users registered yet";
+		}
+		return users.toString();
 	}
 	
 	public String createUser(User newUser) throws ExistingUserException
