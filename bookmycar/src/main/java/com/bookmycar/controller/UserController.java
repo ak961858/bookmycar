@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bookmycar.exceptions.IncorrectPasswordException;
 import com.bookmycar.exceptions.UserNotFoundException;
 import com.bookmycar.model.User;
 import com.bookmycar.service.UserService;
@@ -25,7 +26,7 @@ public class UserController
 		User actual = null;
 		try 
 		{
-			actual = service.getLoginDetailsByUserId(login.getUserId());
+			actual = service.getLoginDetailsByEmail(login.getEmail());
 		} 
 		catch (UserNotFoundException e) 
 		{
@@ -36,7 +37,7 @@ public class UserController
 		{
 			return "Login Successful";
 		}
-		return "Login Failed";
+		return "Incorrect Password";
 	}
 	
 	@GetMapping("/users")
