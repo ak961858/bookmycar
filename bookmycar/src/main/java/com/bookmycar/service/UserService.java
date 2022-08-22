@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bookmycar.dao.UserRepository;
+import com.bookmycar.exceptions.ExistingUserException;
 import com.bookmycar.exceptions.UserNotFoundException;
 import com.bookmycar.model.User;
 
@@ -15,6 +16,7 @@ public class UserService
 {
 	@Autowired
 	UserRepository userRepository;
+	
 	
 	public User getLoginDetailsByUserId(int userId) throws UserNotFoundException
 	{
@@ -38,6 +40,16 @@ public class UserService
 	
 	public List<User> getAll(){
 		return userRepository.findAll();
+	}
+	
+	public String createUser(User newUser) throws ExistingUserException
+	{
+		if(userRepository.findByEmail(newUser.getEmail()).isPresent())
+		{
+			throw new ExistingUserException();
+		}
+		userRepository.save(newUser);
+		return "New User Created Successfully";
 	}
 
 }

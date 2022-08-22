@@ -27,8 +27,8 @@ public class BookingController {
 
 		return bookingService.placeOrder(email, carId);
 
-
 	}
+
 
 	@GetMapping
 	public String viewAllBookings(){
