@@ -5,9 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-
 import com.bookmycar.dao.CarRepository;
 import com.bookmycar.exceptions.CarNotFoundException;
 import com.bookmycar.model.Car;
@@ -38,13 +35,11 @@ public class CarService {
 		throw new CarNotFoundException();
 	}
 	
-	public Car getCarByBrand(String brand) throws CarNotFoundException {
-		Optional<Car> car = carRepository.findAllByBrand(brand);
-		if(car.isPresent())
-		{
-			return car.get();
-		}
-		throw new CarNotFoundException();
+	
+	
+	
+	public List<Car> getCarByBrand(String brand) {
+		return carRepository.findAllByBrand(brand);
 	}
 	public List<Car> getCarByModel(String model) {
 		// TODO Auto-generated method stub
@@ -70,13 +65,10 @@ public class CarService {
 		// TODO Auto-generated method stub
 		return carRepository.findAllByTransmissionType(transmissionType);
 	}
-	public Car getCarByKmsDriven(float kmsDriven) throws CarNotFoundException {
+	public List<Car> getCarByKmsDriven(float kmsDriven) {
 		// TODO Auto-generated method stub
-		Optional<Car> car = carRepository.findAllByKmsDrivenLessThan(kmsDriven);
-		if(car.isPresent()) {
-			return car.get();
-		}
-		throw new CarNotFoundException();
+		return carRepository.findAllByKmsDrivenLessThan(kmsDriven);
+		
 	}
 	public List<Car> getCarRegistrationDate(float registrationDate) {
 		// TODO Auto-generated method stub
@@ -102,13 +94,10 @@ public class CarService {
 		// TODO Auto-generated method stub
 		return carRepository.findAllByFuelTankCapacity(fuelTankCapacity);
 	}
-	public Car getCarByMileage(float mileage) throws CarNotFoundException {
+	public List<Car> getCarByMileage(float mileage){
 		// TODO Auto-generated method stub
-		Optional<Car> car = carRepository.findAllByMileageGreaterThanEqual(mileage);
-		if(car.isPresent()) {
-			return car.get();
-		}
-		throw new CarNotFoundException();
+		return carRepository.findAllByMileageGreaterThanEqual(mileage);
+		
 	}
 	
 	public String getCarByRegistrationNumber(String registrationNumber) {

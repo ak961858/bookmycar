@@ -1,6 +1,5 @@
 package com.bookmycar.controller;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +21,6 @@ public class BookingController {
 	@Autowired
 	BookingService bookingService;
 	
-
 	@GetMapping("/{email}/{carId}")
 	public Booking placeOrder(@PathVariable("email") String email,@PathVariable("carId") int carId) throws UserNotFoundException,CarNotFoundException, CarNotAvailableforBookingException {
 
@@ -32,8 +30,6 @@ public class BookingController {
 
 	}
 
-
-	
 	@GetMapping
 	public String viewAllBookings(){
 		return bookingService.viewAllBookings();

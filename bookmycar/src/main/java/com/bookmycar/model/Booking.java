@@ -1,17 +1,15 @@
 package com.bookmycar.model;
 
-import java.io.Serializable;
+import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import sun.java2d.d3d.D3DScreenUpdateManager;
 
 @Entity
 public class Booking{
@@ -29,9 +27,23 @@ public class Booking{
 	
 	
 	private String bookingStatus;
+	private Date dateBookingPlaced;
+	private Date dateBookingCancelled;
 	
 	
 	
+	public Date getDateBookingPlaced() {
+		return dateBookingPlaced;
+	}
+	public void setDateBookingPlaced(Date dateBookingPlaced) {
+		this.dateBookingPlaced = dateBookingPlaced;
+	}
+	public Date getDateBookingCancelled() {
+		return dateBookingCancelled;
+	}
+	public void setDateBookingCancelled(Date dateBookingCancelled) {
+		this.dateBookingCancelled = dateBookingCancelled;
+	}
 	public Car getCar() {
 		return car;
 	}
@@ -59,11 +71,14 @@ public class Booking{
 	}
 	
 	
-	public Booking(User user, Car car, String bookingStatus) {
+	
+	public Booking(Car car, User user, String bookingStatus, Date dateBookingPlaced, Date dateBookingCancelled) {
 		super();
-		this.user = user;
 		this.car = car;
+		this.user = user;
 		this.bookingStatus = bookingStatus;
+		this.dateBookingPlaced = dateBookingPlaced;
+		this.dateBookingCancelled = dateBookingCancelled;
 	}
 	public Booking() {
 		super();
@@ -72,8 +87,10 @@ public class Booking{
 	@Override
 	public String toString() {
 		return "Booking [bookingId=" + bookingId + ", car=" + car + ", user=" + user + ", bookingStatus="
-				+ bookingStatus + "]";
+				+ bookingStatus + ", dateBookingPlaced=" + dateBookingPlaced + ", dateBookingCancelled="
+				+ dateBookingCancelled + "]";
 	}
+	
 	
 	
 	

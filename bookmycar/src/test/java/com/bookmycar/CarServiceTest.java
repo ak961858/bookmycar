@@ -43,6 +43,7 @@ public class CarServiceTest {
 		System.out.println(testCarList);
 		assertNotNull(testCarList);
 	}
+
 	@Test
 	void testGetCarByCarColor() throws CarNotFoundException {
 		List<Car> testCarList=carService.getCarByColor("black");
