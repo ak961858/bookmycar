@@ -38,8 +38,13 @@ public class CarService {
 		throw new CarNotFoundException();
 	}
 	
-	public List<Car> getCarByBrand(String brand) {
-		return carRepository.findAllByBrand(brand);
+	public Car getCarByBrand(String brand) throws CarNotFoundException {
+		Optional<Car> car = carRepository.findAllByBrand(brand);
+		if(car.isPresent())
+		{
+			return car.get();
+		}
+		throw new CarNotFoundException();
 	}
 	public List<Car> getCarByModel(String model) {
 		// TODO Auto-generated method stub
@@ -61,9 +66,13 @@ public class CarService {
 		// TODO Auto-generated method stub
 		return carRepository.findAllByTransmissionType(transmissionType);
 	}
-	public List<Car> getCarByKmsDriven(float kmsDriven) {
+	public Car getCarByKmsDriven(float kmsDriven) throws CarNotFoundException {
 		// TODO Auto-generated method stub
-		return carRepository.findAllByKmsDrivenLessThan(kmsDriven);
+		Optional<Car> car = carRepository.findAllByKmsDrivenLessThan(kmsDriven);
+		if(car.isPresent()) {
+			return car.get();
+		}
+		throw new CarNotFoundException();
 	}
 	public List<Car> getCarRegistrationDate(float registrationDate) {
 		// TODO Auto-generated method stub
@@ -89,9 +98,13 @@ public class CarService {
 		// TODO Auto-generated method stub
 		return carRepository.findAllByFuelTankCapacity(fuelTankCapacity);
 	}
-	public List<Car> getCarByMileage(float mileage) {
+	public Car getCarByMileage(float mileage) throws CarNotFoundException {
 		// TODO Auto-generated method stub
-		return carRepository.findAllByMileageGreaterThanEqual(mileage);
+		Optional<Car> car = carRepository.findAllByMileageGreaterThanEqual(mileage);
+		if(car.isPresent()) {
+			return car.get();
+		}
+		throw new CarNotFoundException();
 	}
 	
 	public String getCarByRegistrationNumber(String registrationNumber) {
@@ -142,11 +155,4 @@ public class CarService {
 		return carRepository.save(c);
 	}
 
-
-	
-	
-	
-
-	
-	
 }

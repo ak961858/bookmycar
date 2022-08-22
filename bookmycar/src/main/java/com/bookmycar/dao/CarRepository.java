@@ -13,7 +13,7 @@ import com.bookmycar.model.Car;
 @Repository
 public interface CarRepository extends JpaRepository<Car, Integer>
 {
-	public List<Car> findAllByBrand(String brand);
+	public Optional<Car> findAllByBrand(String brand);
 	
 	public List<Car> findAllByBookingStatus(String bookingStatus);
 
@@ -29,7 +29,7 @@ public interface CarRepository extends JpaRepository<Car, Integer>
 
 	public List<Car> findAllByTransmissionType(String transmissionType);
 
-	public List<Car> findAllByKmsDrivenLessThan(float kmsDriven);
+	public Optional<Car> findAllByKmsDrivenLessThan(float kmsDriven);
 
 	public List<Car> findAllByRegistrationDate(float registrationDate);
 
@@ -43,7 +43,7 @@ public interface CarRepository extends JpaRepository<Car, Integer>
 
 	public List<Car> findAllByFuelTankCapacity(int fuelTankCapacity);
 
-	public List<Car> findAllByMileageGreaterThanEqual(float mileage);
+	public Optional<Car> findAllByMileageGreaterThanEqual(float mileage);
 
 	public String findByRegistrationNumber(String registrationNumber);
 }

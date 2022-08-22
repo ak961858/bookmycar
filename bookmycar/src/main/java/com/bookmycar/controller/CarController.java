@@ -38,7 +38,7 @@ public class CarController {
 	
 	//view car by brand name
 	@GetMapping("/brand/{brand}")
-	public List<Car> getCarByBrand(@PathVariable String brand) 
+	public Car getCarByBrand(@PathVariable("brand") String brand) throws CarNotFoundException
 	{
 		return carService.getCarByBrand(brand);
 	}
@@ -64,7 +64,7 @@ public class CarController {
 		return carService.getCarByTransmissionType(transmissionType);
 	}
 	@GetMapping("/kmsDriven/{kmsDriven}")
-	public List<Car> getCarByKmsDriven(@PathVariable float kmsDriven){
+	public Car getCarByKmsDriven(@PathVariable float kmsDriven) throws CarNotFoundException {
 		return carService. getCarByKmsDriven( kmsDriven);
 	}
 	@GetMapping("/registrationDate/{registrationDate}")
@@ -92,7 +92,7 @@ public class CarController {
 		return carService. getCarByFuelTankCapacity(fuelTankCapacity);
 	}
 	@GetMapping("/mileage/{mileage}")
-	public List<Car> getCarByMileage(@PathVariable float mileage){
+	public Car getCarByMileage(@PathVariable float mileage) throws CarNotFoundException{
 		return carService. getCarByMileage(mileage);
 	}
 	@GetMapping("/registrationNumber/{registrationNumber}")
