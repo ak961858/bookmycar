@@ -49,7 +49,7 @@ public class UserController
 	}
 	
 	@PostMapping("/register")
-	public String createUser(User newUser)
+	public String createUser(@RequestBody User newUser)
 	{
 		try {
 			return service.createUser(newUser);
