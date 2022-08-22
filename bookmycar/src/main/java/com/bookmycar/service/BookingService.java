@@ -24,9 +24,10 @@ public class BookingService {
 	@Autowired
 	CarService carService;
 	
-	public Booking placeOrder(int userId,int carId) throws UserNotFoundException,CarNotFoundException, CarNotAvailableforBookingException{
+
+	public Booking placeOrder(String email,int carId) throws UserNotFoundException,CarNotFoundException, CarNotAvailableforBookingException{
 		
-		User user = userService.getLoginDetailsByUserId(userId);//check whether such user exists
+		User user = userService.getLoginDetailsByEmail(email);//check whether such user exists
 		Car car=carService.getCarById(carId);//check whether such car exists
 			
 		//check whether car is available for booking

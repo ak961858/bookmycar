@@ -22,10 +22,16 @@ public class BookingController {
 	@Autowired
 	BookingService bookingService;
 	
+<<<<<<< HEAD
+	@GetMapping("/{email}/{carId}")
+	public Booking placeOrder(@PathVariable("email") String email,@PathVariable("carId") int carId) throws UserNotFoundException,CarNotFoundException, CarNotAvailableforBookingException {
+		return bookingService.placeOrder(email, carId);
+=======
 	//place order,requires userId and carId
 	@GetMapping("/{userId}/{carId}")
 	public Booking placeOrder(@PathVariable("userId") int userId,@PathVariable("carId") int carId) throws UserNotFoundException,CarNotFoundException, SQLIntegrityConstraintViolationException, CarNotAvailableforBookingException {
 		return bookingService.placeOrder(userId, carId);
+>>>>>>> 08627ac98d5ba07d0a6a9f8612f41d74acccb8eb
 	}
 	
 	@GetMapping

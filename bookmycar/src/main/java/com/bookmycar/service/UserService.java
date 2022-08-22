@@ -16,9 +16,19 @@ public class UserService
 	@Autowired
 	UserRepository userRepository;
 	
-	public User getLoginDetailsByUserId(int id) throws UserNotFoundException
+	public User getLoginDetailsByUserId(int userId) throws UserNotFoundException
 	{
-		Optional<User> details = userRepository.findByUserId(id);
+		Optional<User> details = userRepository.findByUserId(userId);
+		if(details.isPresent())
+		{
+			return details.get();
+		}
+		throw new UserNotFoundException();
+	}
+	
+	public User getLoginDetailsByEmail(String email) throws UserNotFoundException
+	{
+		Optional<User> details = userRepository.findByEmail(email);
 		if(details.isPresent())
 		{
 			return details.get();
