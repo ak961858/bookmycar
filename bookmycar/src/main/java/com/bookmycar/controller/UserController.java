@@ -20,25 +20,11 @@ public class UserController
 	@Autowired
 	UserService service;
 	
-	@PostMapping("/login")
-	public String checkLogin(@RequestBody User login)
-	{
-		User actual = null;
-		try 
-		{
-			actual = service.getLoginDetailsByEmail(login.getEmail());
-		} 
-		catch (UserNotFoundException e) 
-		{
-			return e.getMessage();
-		}
-		
-		if(actual.getPassword().equals(login.getPassword()))
-		{
-			return "Login Successful";
-		}
-		return "Incorrect Password";
-	}
+	@PostMapping("/users/login")
+    public String checkLogin(@RequestBody User login) throws UserNotFoundException
+    {
+        return service.isValidLogin(login);
+    }    
 	
 	
 	
@@ -47,7 +33,7 @@ public class UserController
 		return service.getAll();
 	}
 	
-	@PostMapping("/register")
+	@PostMapping("/users/register")
 	public String createUser(@RequestBody User newUser) 
 	{
 		try {

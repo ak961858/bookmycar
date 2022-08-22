@@ -13,8 +13,10 @@ import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import static org.mockito.BDDMockito.given;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 
 import com.bookmycar.dao.UserRepository;
+import com.bookmycar.exceptions.ExistingUserException;
 import com.bookmycar.exceptions.UserNotFoundException;
 import com.bookmycar.model.User;
 import com.bookmycar.service.UserService;
@@ -51,6 +53,25 @@ public class UserTest{
 
        // then
        assertThat(checkUser).isNotNull();
+   }
+   
+   @DisplayName("JUnit test for userService createUser method")
+   @Test
+   public void testRegisterUser() throws ExistingUserException
+   {
+      
+       given(userRepository.save(login))
+       .willReturn(login);
+
+
+
+      // when
+       String status = userService.createUser(login);
+
+
+
+      // then
+       assertEquals("New User Created Successfully",status);
    }
    
 }

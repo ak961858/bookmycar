@@ -17,7 +17,23 @@ public class UserService
 	@Autowired
 	UserRepository userRepository;
 	
-	
+
+	public String isValidLogin(User login) throws UserNotFoundException
+    {
+        Optional<User> details = userRepository.findByEmail(login.getEmail());
+        if(details.isPresent())
+        {
+            if(details.get().getPassword().equals(login.getPassword()))
+            {
+                return "Login Successful";
+            }
+            else
+            {
+                return "Login Failed";
+            }
+        }
+        throw new UserNotFoundException();
+    }
 	public User getLoginDetailsByUserId(int userId) throws UserNotFoundException
 	{
 		Optional<User> details = userRepository.findByUserId(userId);
@@ -44,6 +60,7 @@ public class UserService
 			return "No Users registered yet";
 		}
 		return users.toString();
+				
 	}
 	
 	public String createUser(User newUser) throws ExistingUserException
