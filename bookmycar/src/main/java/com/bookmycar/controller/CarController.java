@@ -42,6 +42,12 @@ public class CarController {
 	{
 		return carService.getCarByBrand(brand);
 	}
+	
+	@GetMapping("/city/{city}")
+	public List<Car> getCarByCarCity(@PathVariable String city) 
+	{
+		return carService.getCarByCarCity(city);
+	}
 	@GetMapping("/model/{model}")
 	public List<Car> getCarByModel(@PathVariable String model ){
 		return carService.getCarByModel(model);
@@ -63,7 +69,7 @@ public class CarController {
 	public List<Car> getCarByTransmissionType(@PathVariable String transmissionType){
 		return carService.getCarByTransmissionType(transmissionType);
 	}
-	@GetMapping("/kmsDriven/{kmsDriven}")
+	@GetMapping("/kms/{kmsDriven}")
 	public List<Car> getCarByKmsDriven(@PathVariable float kmsDriven){
 		return carService. getCarByKmsDriven( kmsDriven);
 	}

@@ -1,0 +1,47 @@
+package com.bookmycar;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import com.bookmycar.dao.CarRepository;
+import com.bookmycar.exceptions.CarNotFoundException;
+import com.bookmycar.model.Car;
+import com.bookmycar.service.CarService;
+
+@SpringBootTest
+public class CarServiceTest {
+	
+	@Autowired
+	private CarService carService;
+	
+	
+	//We should use @MockBean Annotation if we dont want to perform CRUD operations on our DB and
+	//just test the Service Layer,now 
+	//@MockBean
+	//private CarRepository carRepository;
+	
+	@BeforeEach
+	void setUp() {
+		
+		
+	}
+	
+	@Test
+	void testGetCarById() throws CarNotFoundException {
+		Car testCar=carService.getCarById(3);
+		assertNotNull(testCar);
+		assertEquals(3, testCar.getCarId());
+	}
+	
+	@Test
+	void testGetCarByCarCity() throws CarNotFoundException {
+		List<Car> testCarList=carService.getCarByCarCity("pune");
+		System.out.println(testCarList);
+		assertNotNull(testCarList);
+	}
+
+}

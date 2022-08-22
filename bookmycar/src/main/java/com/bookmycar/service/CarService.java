@@ -5,9 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-
 import com.bookmycar.dao.CarRepository;
 import com.bookmycar.exceptions.CarNotFoundException;
 import com.bookmycar.model.Car;
@@ -36,6 +33,11 @@ public class CarService {
 			return car.get();
 		}
 		throw new CarNotFoundException();
+	}
+	
+	
+	public List<Car> getCarByCarCity(String city) {
+		return carRepository.findAllByCarCity(city);
 	}
 	
 	public List<Car> getCarByBrand(String brand) {
